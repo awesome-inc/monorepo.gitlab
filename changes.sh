@@ -1,6 +1,8 @@
 #!/bin/bash
 folder=${1}
-ref=${LAST_GREEN_COMMIT:-HEAD~}
+DIRNAME="$(dirname $(readlink -f "$0"))"
+ref=$(cat "${DIRNAME}/.LAST_GREEN_COMMIT") 
+ref=${ref:-HEAD~}
 
 echo "Checking for changes of folder '${folder}' from ref '${ref}'..."
 
