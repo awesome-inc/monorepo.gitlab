@@ -35,7 +35,7 @@ build-foo:
 
 Use [YAML anchors](http://blog.daemonl.com/2016/02/yaml.html#yaml-anchors-references-extend) to keep your jobs DRY.
 
-Say your using [docker-compose](https://docs.docker.com/compose/) to orchestrate & build jor services.
+Say your using [docker-compose](https://docs.docker.com/compose/) to orchestrate & build your services.
 
 Your `docker-compose.yml` may look something like this
 
