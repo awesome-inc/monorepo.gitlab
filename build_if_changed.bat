@@ -13,10 +13,8 @@ echo Building '%folder%'...
 for /f "tokens=1,* delims= " %%a in ("%*") do set command=%%b
 echo Executing '%command%'...
 echo.
-pushd %folder%
 call %command%
 set exitCode=%ERRORLEVEL%
-popd
 
 exit /B %exitCode%
 endlocal

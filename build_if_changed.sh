@@ -12,9 +12,7 @@ echo
 echo "Building '${folder}'..."
 echo "Executing '${command}'..."
 echo
-pushd ${folder}
 exec ${command}
 exitCode=$?
-popd
 
 exit ${exitCode}
