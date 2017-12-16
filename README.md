@@ -4,7 +4,8 @@
 
 Scripts helping towards [Monorepo](https://medium.com/@maoberlehner/monorepos-in-the-wild-33c6eb246cb9) with [GitLab CI](https://docs.gitlab.com/ee/ci/yaml/).
 
-Mostly adapted from workarounds given in [gitlab-ce/issues/19813](https://gitlab.com/gitlab-org/gitlab-ce/issues/19813)
+Mostly adapted from workarounds given in [gitlab-ce/issues/19232](https://gitlab.com/gitlab-org/gitlab-ce/issues/19232).
+Hopefully soon to be integrated into GitLab CI!
 
 ## How to use
 
