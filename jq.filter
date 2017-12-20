@@ -1,1 +1,1 @@
-first(.[] | select(.status == "success") | .sha)
+first(.[] | .sha)
