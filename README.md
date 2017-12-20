@@ -17,9 +17,15 @@ git submodule add https://github.com/awesome-inc/monorepo.gitlab.git .monorepo.g
 
 and update your `.gitlab-ci.yml`.
 
-- Add a `before` script to get the *last green commit* in Gitlab CI as `${LAST_COMMIT}`:
+- Add some `variables` and a `before_script` to get the *last green commit* in Gitlab CI:
 
 ```yml
+# needs `curl`, `jq` 1.5 and `${PRIVATE_TOKEN}, cf.:
+# - https://docs.gitlab.com/ee/api/#personal-access-tokens
+# - https://docs.gitlab.com/ce/ci/variables/README.html#secret-variables
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  CI_SERVER_URL: https://gitlab.com
 before_script:
     - .monorepo.gitlab/last_green_commit.sh
 ```
