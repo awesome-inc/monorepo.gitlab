@@ -1,6 +1,6 @@
-[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/awesome-inc/hello.gitlab.monorepo/master)
-
 # monorepo.gitlab
+
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/awesome-inc/hello.gitlab.monorepo/master)
 
 Scripts helping towards [Monorepo](https://medium.com/@maoberlehner/monorepos-in-the-wild-33c6eb246cb9) with [GitLab CI](https://docs.gitlab.com/ee/ci/yaml/).
 
@@ -17,7 +17,7 @@ git submodule add https://github.com/awesome-inc/monorepo.gitlab.git .monorepo.g
 
 and update your `.gitlab-ci.yml`.
 
-- Add some `variables` and a `before_script` to get the *last green commit* in Gitlab CI:
+- Add some `variables` and a `before_script` to get the *last green commit* in Gitlab CI
 
 ```yml
 # needs `curl`, `jq` 1.5 and `${PRIVATE_TOKEN}, cf.:
@@ -30,7 +30,7 @@ before_script:
     - .monorepo.gitlab/last_green_commit.sh
 ```
 
-- Build your sub-component `foo` only when there are diffs in `./foo` since `${LAST_COMMIT}`
+- Build your sub-component `foo` only when there are diffs in `./foo` since the *last green commit*
 
 ```yml
 build-foo:
