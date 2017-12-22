@@ -2,7 +2,11 @@
 setlocal
 set folder=%1
 set /P ref=<%~dp0.LAST_GREEN_COMMIT
-if "%ref%"=="" set ref=HEAD~
+rem Always indicate changes unless valid green commit ref given, #1
+if "%ref%"=="" (
+  echo No LAST_GREEN_COMMIT. Assuming changes.
+  exit /B 0
+)
 
 echo Checking for changes of folder '%folder%' from ref '%ref%'...
 

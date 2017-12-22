@@ -2,7 +2,11 @@
 folder=${1}
 DIRNAME="$(dirname $(readlink -f "$0"))"
 ref=$(cat "${DIRNAME}/.LAST_GREEN_COMMIT") 
-ref=${ref:-HEAD~}
+# Always indicate changes unless valid green commit ref given, #1
+if [[ ! ${ref:+1} ]]; then 
+  echo 'No LAST_GREEN_COMMIT. Assuming changes.'
+  exit 0
+fi
 
 echo "Checking for changes of folder '${folder}' from ref '${ref}'..."
 
