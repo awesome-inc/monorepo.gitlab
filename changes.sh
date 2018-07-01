@@ -10,6 +10,12 @@ fi
 
 echo "Checking for changes of folder '${folder}' from ref '${ref}'..."
 
+git diff ${ref} --name-only >/dev/null
+if [[ $? -ne 0 ]]; then
+  echo "Git error. Assuming changes."
+  exit 0
+fi
+
 git diff ${ref} --name-only | grep -qw "^${folder}"
 changes=$?
 if [[ ${changes} -eq 0 ]]; then
