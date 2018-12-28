@@ -42,6 +42,8 @@ build-foo:
 
 ## Tips
 
+### DRY Jobs conventions/blueprints
+
 Use [YAML anchors](http://blog.daemonl.com/2016/02/yaml.html#yaml-anchors-references-extend) to keep your jobs DRY.
 
 Say your using [docker-compose](https://docs.docker.com/compose/) to orchestrate & build your services.
@@ -85,3 +87,27 @@ Then, your jobs in `.gitlab-ci.yml` could look something like this
 webapp:
   <<: *build_definition
 ```
+
+### Docker-in-Docker executor
+
+With [awesomeinc/docker.gitlab.monorepo](https://hub.docker.com/r/awesomeinc/docker.gitlab.monorepo) it is easy to use GitLab's [docker-in-docker executor](https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#use-docker-in-docker-executor). Just add this to your `.gitlab-ci.yml`
+
+```yml
+variables:
+  # cf.: https://docs.gitlab.com/ee/ci/docker/using_docker_build.html
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_DRIVER: overlay2
+services:
+  - docker:dind
+image:
+  name: awesomeinc/docker.gitlab.monorepo:0.1.0
+  entrypoint: [""] # force an empty entrypoint, cf.: https://gitlab.com/gitlab-org/gitlab-runner/issues/2692#workaround  
+```
+
+## Examples
+
+Some example usages are given in
+
+- [mkoertgen/hello.gitlab.monorepo](https://gitlab.com/mkoertgen/hello.gitlab.monorepo)
+- [mkoertgen/hello.docker-sonar](https://gitlab.com/mkoertgen/hello.docker-sonar)
+- ...
