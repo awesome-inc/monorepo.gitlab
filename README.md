@@ -20,12 +20,9 @@ and update your `.gitlab-ci.yml`.
 - Add some `variables` and a `before_script` to get the *last green commit* in Gitlab CI
 
 ```yml
-# needs `curl`, `jq` 1.5 and `${PRIVATE_TOKEN}, cf.:
-# - https://docs.gitlab.com/ee/api/#personal-access-tokens
-# - https://docs.gitlab.com/ce/ci/variables/README.html#secret-variables
+# needs `curl`, `jq` 1.5
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
-  CI_SERVER_URL: https://gitlab.com
 before_script:
     - .monorepo.gitlab/last_green_commit.sh
 ```
